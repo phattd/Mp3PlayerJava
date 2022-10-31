@@ -1,5 +1,6 @@
 package ui;
 
+import entity.ControlCommand;
 import entity.TransferAction;
 import ui.component.ListMusic;
 import ui.component.MusicPlayer;
@@ -57,7 +58,16 @@ public class PlayerFrame extends JFrame {
     }
     private void eventHandling() {
         TransferAction.addPropertyChangeListener(e ->
-                System.out.println( e.getNewValue()));
+                updateStatus((ControlCommand) e.getNewValue()));
+    }
+    private void updateStatus(ControlCommand controlCommand) {
+        if (controlCommand == ControlCommand.PLAY) {
+            musicPlayer.playStatus();
+        } else  {
+            if (controlCommand == ControlCommand.PAUSE) {
+                musicPlayer.pauseStatus();
+            }
+        }
     }
 
 }

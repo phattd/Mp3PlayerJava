@@ -41,13 +41,21 @@ public class MusicPlayer extends JPanel {
     private void setLocationComponent() {
         pnBackground.setOpaque(false);
         pnBackground.setPreferredSize(new Dimension(this.width, this.height*2/3));
-
         dvdAnimation.setHorizontalAlignment(SwingConstants.CENTER);
         dvdAnimation.repaint();
         pnBackground.setLayout(new BorderLayout());
         pnBackground.add(dvdAnimation);
         this.add(pnBackground, BorderLayout.CENTER);
         this.add(controlMusic, BorderLayout.SOUTH);
+    }
+    public void playStatus() {
+        dvdAnimation.setStop(false);
+        dvdAnimation.repaint();
+    }
+    public void pauseStatus() {
+        dvdAnimation.setStop(true);
+        System.out.println("stop");
+        dvdAnimation.repaint();
     }
 
 
